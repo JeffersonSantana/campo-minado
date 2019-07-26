@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <style>
+            table {
+                width: 400px;
+                height: 400px;
+            }
+            td {
+                width: 33%;
+                height: 33%;
+                background: #090;
+                border: #000;
+                cursor: pointer;
+            }
+            td:hover {
+                background: #070;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Tem 2 Bombas</p>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <script>
+            window.matriz = [];
+
+            function addEventClick(matriz) {
+                matriz.forEach(function(col) {
+                    col.forEach(function(cell) {
+                        cell.addEventListener('click', function(e) {
+                            alert(e);
+                        });
+                    });
+                });
+            };
+            function createGame() {
+                var game1 = [
+                    [],
+                    [],
+                    []
+                ];
+            };
+            function mountMatriz(callback) {
+                var cols = window.document.querySelectorAll('tr');
+                cols.forEach(function(col) {
+                    var cells = col.querySelectorAll('td');
+                    window.matriz.push(cells);
+                });
+                callback(window.matriz);
+            };
+            (function() {
+                mountMatriz(addEventClick);
+                createGame();
+            }());
+        </script>
+    </body>
+</html>
